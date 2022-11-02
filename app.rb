@@ -48,6 +48,11 @@ class Application < Sinatra::Base
     return erb(:album_created)
   end
 
+  get '/' do
+    return erb(:index)
+  end
+  
+  
   get '/artists' do
     repo = ArtistRepository.new
     @artists = repo.all

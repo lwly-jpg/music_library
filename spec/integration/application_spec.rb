@@ -7,6 +7,21 @@ describe Application do
 
   let(:app) { Application.new }
 
+  context 'GET /' do
+    it 'returns homepage with links to other pages' do
+      response = get('/')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Music Library</h1>')
+      expect(response.body).to include('<h2>Albums</h2>')
+      expect(response.body).to include('<a href="/albums">View albums</a>')
+      expect(response.body).to include('<a href="/albums/new">Add new album</a>')
+      expect(response.body).to include('<h2>Artists</h2>')
+      expect(response.body).to include('<a href="/artists">View artists</a>')
+      expect(response.body).to include('<a href="/artists/new">Add new artist</a>')
+    end
+  end
+  
+  
   context 'GET /albums' do
     it 'returns list of albums' do
       response = get('/albums')
