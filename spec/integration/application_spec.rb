@@ -26,12 +26,10 @@ describe Application do
     it 'returns list of albums' do
       response = get('/albums')
       expect(response.status).to eq(200)
-      expect(response.body).to include('Title: Surfer Rosa')
-      expect(response.body).to include('Released: 1988')
-      expect(response.body).to include('Title: Waterloo')
-      expect(response.body).to include('Released: 1974')
-      expect(response.body).to include('<a href="/albums/2">More info</a>')
-      expect(response.body).to include('<a href="/albums/3">More info</a>')
+      expect(response.body).to include('<a href="/albums/2">Surfer Rosa</a>')
+      expect(response.body).to include('<li>Released: 1988</li>')
+      expect(response.body).to include('<a href="/albums/3">Waterloo</a>')
+      expect(response.body).to include('<li>Released: 1974</li>')
     end
   end
 
@@ -58,7 +56,7 @@ describe Application do
       expect(response.status).to eq(200)
       expect(response.body).to include('<h1>Voyage added to albums</h1>')
       get_response = get('/albums')
-      expect(get_response.body).to include('Title: Voyage')
+      expect(get_response.body).to include('Voyage')
       expect(get_response.body).to include('Released: 2022')
     end
   end
@@ -67,12 +65,10 @@ describe Application do
     it 'returns list of artists' do
       response = get('/artists')
       expect(response.status).to eq(200)
-      expect(response.body).to include('Artist: Pixies')
-      expect(response.body).to include('Genre: Rock')
-      expect(response.body).to include('<a href="/artists/2">More info</a>')
-      expect(response.body).to include('Artist: Taylor Swift')
-      expect(response.body).to include('Genre: Pop')
-      expect(response.body).to include('<a href="/artists/3">More info</a>')
+      expect(response.body).to include('Pixies')
+      expect(response.body).to include('<li>Genre: Rock</li>')
+      expect(response.body).to include('Taylor Swift')
+      expect(response.body).to include('<li>Genre: Pop</li>')
     end
   end
 
@@ -125,9 +121,8 @@ describe Application do
       response = post('/artists', name: 'Wild Nothing', genre: 'Indie')
       expect(response.status).to eq(200)
       get_response = get('/artists')
-      expect(get_response.body).to include('Artist: Wild Nothing')
+      expect(get_response.body).to include('Wild Nothing')
       expect(get_response.body).to include('Genre: Indie')
-      expect(get_response.body).to include('<a href="/artists/6">More info</a>')
     end
   end
 

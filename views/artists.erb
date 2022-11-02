@@ -1,14 +1,19 @@
 <html>
-<head></head>
+<head>
+  <title>All Artists - Music Library</title>
+</head>
 <body>
 <h1>Artists</h1>
 <% @artists.each do |artist| %>
   <div>
-    Artist: <%= artist.name %>
-    Genre: <%= artist.genre %>
-    <a href="/artists/<%= artist.id %>">More info</a>
+    <h2><a href="/artists/<%= artist.id %>"><%= artist.name %></a></h2>
+    <ul>
+    <li>Genre: <%= artist.genre %></li>
+    </ul>
   </div>
 <% end %>
+
+<a href="/">Home</a>
 
 </body>
 </html>

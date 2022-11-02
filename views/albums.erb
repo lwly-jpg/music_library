@@ -1,15 +1,20 @@
 <html>
-  <head></head>
+  <head>
+  <title>All Albums - Music Library</title>
+  </head>
   <body>
     <h1>Albums</h1>
 
     <% @albums.each do |album| %>
       <div>
-        Title: <%= album.title %>
-        Released: <%= album.release_year %>
-        <a href="/albums/<%= album.id %>">More info</a>
+      <h2><a href="/albums/<%= album.id %>"><%= album.title %></a></h2>
+      <ul>
+        <li>Released: <%= album.release_year %></li>
+      </ul>
       </div>
     <% end %>
+
+    <a href="/">Home</a>
 
   </body>
 </html>
